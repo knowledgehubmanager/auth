@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  auth:
+    build: .
+    container_name: auth
+    tty: true
+    ports:
+      - 1001:1000
+    volumes:
+      - .:/auth
+
+  db:
+    image: postgres:12.1
+    container_name: db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./docker/data/postgres:/var/lib/postgresql/data
